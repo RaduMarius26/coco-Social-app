@@ -1,0 +1,73 @@
+<!DOCTYPE HTML>
+<html xmlns:th="https://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <title>register</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <script>
+        function editPost(id) {
+          var x = document.getElementById(id);
+          if (x.style.display === "none") {
+            x.style.display = "block";
+          } else {
+            x.style.display = "none";
+          }
+        }
+    </script>
+</head>
+<body>
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+    <ul class="navbar-nav">
+        <li class="nav-item">
+            <a class="nav-link" href="/register">Register</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/login">Login</a>
+        </li>
+        <li class="nav-item active">
+            <a class="nav-link" href="/createPost">Create a post!</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/profile">Your profile</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link disabled" href="/all">See all users</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link disabled" href="/allPosts">See all posts</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link disabled" href="/clearAllPosts">Delete alll posts</a>
+        </li>
+        <li class="search-item">
+            <form action="#" th:action="@{/searchUserName}" th:object="${searchUserName}" method="post">
+                <input type="text" th:field="*{text}" required/>
+                <input  type = "submit" value="Search">
+            </form>
+        </li>
+    </ul>
+</nav>
+
+<p th:text="${name}"></p>
+<tr th:each="userPosts : ${profilePosts}">
+    <p></p>
+    <td><span th:text="${userPosts.description}">  </span></td>
+    <p><button th:onclick="'editPost(' + ${userPosts.postID} + ')'">Edit this post!</button></p>
+
+    <div th:id="${userPosts.postID}">
+        <form action="#" th:action="@{/editPost}" th:object="${editPost}" method="put">
+            <p>Your description: <input type="text" th:field="*{description}" required/> </p>
+
+            <p>Picture url: <input type="text" th:field="*{url}" required/> </p>
+
+            <p><input  type = "submit" />
+                <input type="reset" value="Reset" /></p>
+        </form>
+    </div>
+
+
+    <td><img th:src="${userPosts.url}"/> </td>
+</tr>
+
+</body>
+</html>

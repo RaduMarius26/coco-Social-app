@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<html xmlns:th="https://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <title>register</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+</head>
+<body>
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+    <ul class="navbar-nav">
+        <li class="nav-item">
+            <a class="nav-link" href="/register">Register</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/login">Login</a>
+        </li>
+        <li class="nav-item active">
+            <a class="nav-link" href="/createPost">Create a post!</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/profile">Your profile</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link disabled" href="/all">See all users</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link disabled" href="/allPosts">See all posts</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link disabled" href="/clearAllPosts">Delete alll posts</a>
+        </li>
+
+    </ul>
+</nav>
+<tr th:each="user : ${usersByName}">
+    <p></p>
+    <td><a style="color : red;" th:text="${user.userName}"  th:href="'/profileSearch/' + ${user.userName}">  </a></td>
+    <p></p>
+</tr>
+</body>
+</html>
