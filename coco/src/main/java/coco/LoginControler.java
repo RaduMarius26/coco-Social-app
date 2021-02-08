@@ -33,7 +33,7 @@ public class LoginControler {
     public String registerOUT(@ModelAttribute User login,Model model, HttpSession session) {
         if(check(login)){
             session.setAttribute("userName", login.getUserName());
-           return "loginSuccess";
+            return "loginSuccess";
         } else {
             model.addAttribute("login", new User());
             return "login";
