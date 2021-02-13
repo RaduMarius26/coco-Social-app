@@ -14,24 +14,21 @@ import javax.servlet.http.HttpSession;
 @Controller
 public class LoginControler {
     @Autowired
-        private UserRepository userRepository;
-    // test
+    private UserRepository userRepository;
+
     @GetMapping("/login")
     public String loginScreen (Model model) {
         model.addAttribute("login", new User());
         return "login";
     }
 
-    private @ResponseBody boolean check (User login) {
-        if(userRepository.checkUserPasswordCombination(login.getUserName(),login.getPassword()).size() == 1) {
-            return true;
-        } else {
-            return false;
-        }
+    private @ResponseBody boolean checkUserLoginData (User login) {
+        return (userRepository.checkUserPasswordCombination(login.getUserName(),login.getPassword()).size() == 1);
     }
+    
     @PostMapping("/login")
-    public String registerOUT(@ModelAttribute User login,Model model, HttpSession session) {
-        if(check(login)){
+    public String loginEvaluation(@ModelAttribute User login,Model model, HttpSession session) {
+        if(checkUserLoginData(login)){
             session.setAttribute("userName", login.getUserName());
             return "loginSuccess";
         } else {
