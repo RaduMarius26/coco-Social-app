@@ -15,7 +15,7 @@ import javax.servlet.http.HttpSession;
 public class LoginControler {
     @Autowired
         private UserRepository userRepository;
-
+    // test
     @GetMapping("/login")
     public String loginScreen (Model model) {
         model.addAttribute("login", new User());
