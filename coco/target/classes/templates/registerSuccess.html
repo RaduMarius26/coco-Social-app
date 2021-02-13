@@ -1,0 +1,20 @@
+<!DOCTYPE HTML>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+	<title>Getting Started: Handling Form Submission</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+</head>
+<body>
+
+<h1>You are in!</h1>
+<a href="/register">Try again</a>
+<a href="/all">Vezi baza de date</a>
+<H1>Username</H1>
+<p th:text="${register.userName}" />
+<H1>Password</H1>
+<p th:text="${register.password}" />
+
+</body>
+</html>
